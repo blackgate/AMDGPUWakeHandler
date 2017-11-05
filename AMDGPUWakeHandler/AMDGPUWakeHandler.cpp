@@ -5,11 +5,6 @@
 #define kMyNumberOfStates 2
 #define kIOPMPowerOff 0
 
-enum {
-    kFiveSeconds = 5000000
-};
-
-
 // This required macro defines the class's constructors, destructors,
 // and several other methods I/O Kit requires.
 OSDefineMetaClassAndStructors(AMDGPUWakeHandler, IOService)
@@ -17,15 +12,6 @@ OSDefineMetaClassAndStructors(AMDGPUWakeHandler, IOService)
 static inline void outb(unsigned short port, unsigned char value)
 {
     __asm__ __volatile__ ("outb %1, %0" : : "dN" (port), "a" (value));
-}
-
-static void disableGPUDelayed(thread_call_param_t param0,
-                              thread_call_param_t param1)
-{
-    AMDGPUWakeHandler *self = (AMDGPUWakeHandler *)param0;
-    IOSleep(5);
-    self->disableGPU();
-    self->acknowledgeSetPowerState();
 }
 
 // Define the driver's superclass.
@@ -65,8 +51,6 @@ bool AMDGPUWakeHandler::start(IOService *provider)
 
     registerPowerDriver (this, myPowerStates, kMyNumberOfStates);
 
-    //disableGPUDelayedCall = thread_call_allocate(disableGPUDelayed, this);
-    
     return result;
 }
 
@@ -88,12 +72,9 @@ void AMDGPUWakeHandler::disableGPU()
 
 IOReturn AMDGPUWakeHandler::setPowerState ( unsigned long whichState, IOService * whatDevice )
 {
-    IOReturn ret = kIOPMAckImplied;
     if ( kIOPMPowerOff != whichState ) {
         IOLog("Waking up\n");
         this->disableGPU();
-        //thread_call_enter(disableGPUDelayedCall);
-        //ret = kFiveSeconds;
     }
-    return ret;
+    return kIOPMAckImplied;
 }

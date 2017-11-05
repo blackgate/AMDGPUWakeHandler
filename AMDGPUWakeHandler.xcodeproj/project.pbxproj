@@ -12,6 +12,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C3D150A1FAF27E3001B2D44 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0C955B6E1FADF33500EFC963 /* AMDGPUWakeHandler.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AMDGPUWakeHandler.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C955B711FADF33500EFC963 /* AMDGPUWakeHandler.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AMDGPUWakeHandler.hpp; sourceTree = "<group>"; };
 		0C955B731FADF33500EFC963 /* AMDGPUWakeHandler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AMDGPUWakeHandler.cpp; sourceTree = "<group>"; };
@@ -32,6 +33,7 @@
 		0C955B641FADF33400EFC963 = {
 			isa = PBXGroup;
 			children = (
+				0C3D150A1FAF27E3001B2D44 /* README.md */,
 				0C955B701FADF33500EFC963 /* AMDGPUWakeHandler */,
 				0C955B6F1FADF33500EFC963 /* Products */,
 			);
