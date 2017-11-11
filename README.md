@@ -10,7 +10,7 @@ After building using Xcode, copy the kext to `/Library/Extensions` and run the f
 
 ```
 sudo chown -R root:wheel /Library/Extensions/AMDGPUWakeHandler.kext
-touch /Libary/Extensions
+touch /Library/Extensions
 ```
 
 Reboot.
