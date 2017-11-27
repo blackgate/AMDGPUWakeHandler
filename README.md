@@ -2,7 +2,7 @@
 
 This kernel extension disables the AMD GPU after waking up from sleep. It is intended to be used on a 2011 MacBook Pro with a failed AMD GPU.
 
-**NOTE: this should only be used with the grub solution ([found here](https://gist.github.com/blackgate/17ac402e35d2f7e0f1c9708db3dc7a44)) or similar that prevents the AMD kexts from being loaded, otherwise it will kernel panic.**
+**NOTE: this should only be used with the grub solution ([found here](https://gist.github.com/blackgate/17ac402e35d2f7e0f1c9708db3dc7a44)) or similar that powers down the discrete GPU before booting macOS, otherwise it will fail to load.**
 
 ## Installation
 
