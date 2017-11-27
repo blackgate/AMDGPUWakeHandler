@@ -13,6 +13,9 @@
 #define GMUX_PORT_SWITCH_DDC        0x28
 #define GMUX_PORT_SWITCH_EXTERNAL   0x40
 #define GMUX_PORT_DISCRETE_POWER    0x50
+#define GMUX_PORT_INTERRUPT_ENABLE  0x14
+
+#define GMUX_INTERRUPT_ENABLE       0xff
 
 #define GMUX_SWITCH_DDC_IGD         0x1
 #define GMUX_SWITCH_DISPLAY_IGD     0x2
@@ -102,6 +105,7 @@ void AMDGPUWakeHandler::stop(IOService *provider)
 void AMDGPUWakeHandler::disableGPU()
 {
     IOLog("Disabling GPU\n");
+    gmux_write8(GMUX_PORT_INTERRUPT_ENABLE, GMUX_INTERRUPT_ENABLE);
     gmux_write8(GMUX_PORT_SWITCH_DDC, GMUX_SWITCH_DDC_IGD);
     gmux_write8(GMUX_PORT_SWITCH_DISPLAY, GMUX_SWITCH_DISPLAY_IGD);
     gmux_write8(GMUX_PORT_SWITCH_EXTERNAL, GMUX_SWITCH_EXTERNAL_IGD);
